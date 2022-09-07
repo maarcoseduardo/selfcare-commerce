@@ -61,6 +61,7 @@ export function ItemInCart() {
       RemoveThisItem(id)
     }
 
+    // fix this
     const valueTotal = tempProduct.map((value) => value.total)
     console.log(valueTotal);
     let sumProductReduce = valueTotal.reduce(function(sum, count){
