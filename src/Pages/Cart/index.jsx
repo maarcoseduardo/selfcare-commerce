@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { ItemInCart } from '../../components/ItemInCart'
 import {
   Container,

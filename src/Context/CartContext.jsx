@@ -5,7 +5,7 @@ const CartContext = createContext();
 export function CartProvider({ children }) {
   const [productInCart, setProductInCart] = useState([]);
   const [ total, setTotal ] = useState([0])
-  const [ subTotal, setSubTotal ] = useState([]);
+  const [ subTotal, setSubTotal ] = useState([0]);
   
   return (
     <CartContext.Provider

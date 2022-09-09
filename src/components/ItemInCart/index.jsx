@@ -22,7 +22,7 @@ import { useCart } from '../../Context/CartContext';
 
 export function ItemInCart() {
   const ItemsInCart = JSON.parse(sessionStorage.getItem("IdItemCart"))
-  const { productInCart, setProductInCart, total, setTotal, subTotal, setSubTotal} = useCart();
+  const { productInCart, setProductInCart, setTotal, setSubTotal} = useCart();
 
   function AddOneMoreItem(id){
     const tempProduct = [...ItemsInCart]
@@ -42,6 +42,7 @@ export function ItemInCart() {
     })
 
     setTotal(sumProductReduce)
+    setSubTotal(sumProductReduce)
   }
 
   function RemoveOneMoreItem(id){
@@ -61,14 +62,13 @@ export function ItemInCart() {
       RemoveThisItem(id)
     }
 
-    // fix this
     const valueTotal = tempProduct.map((value) => value.total)
     console.log(valueTotal);
     let sumProductReduce = valueTotal.reduce(function(sum, count){
-      return sum - count
+      return sum + count
     })
-    console.log(sumProductReduce);
     setTotal(sumProductReduce)
+    setSubTotal(sumProductReduce)
   }
 
   function RemoveThisItem(id){
