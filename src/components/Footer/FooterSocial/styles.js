@@ -16,9 +16,14 @@ export const AreaSocial = styled.div`
 export const UnListSocial = styled.ul`
   display: flex;
   justify-content: space-around;
+  align-items: center;
   flex-wrap: wrap;
   max-width: 80px;
   width: 100%;
+
+  @media only screen and (min-width: 200px) and (max-width: 370px) {
+   flex-direction: column; 
+  }
 `;
 
 export const ListSocial = styled.li`
@@ -31,16 +36,20 @@ export const ListSocial = styled.li`
 `;
 
 export const ImgSocial = styled.img`
-  height: 24px;
-  width: 24px;
+  height: 28px;
+  width: 28px;
 `;
 
 export const UnListPayment = styled.ul`
   display: flex;
   justify-content: space-around;
-  flex-wrap: wrap;
-  max-width: 100px;
+  max-width: 150px;
   width: 100%;
+  align-items: center;
+
+  @media only screen and (min-width: 200px) and (max-width: 370px) {
+   flex-direction: column; 
+  }
 `;
 
 export const ListPayment = styled.li`
@@ -48,6 +57,6 @@ export const ListPayment = styled.li`
 `;
 
 export const ImgPayment = styled.img`
- height: 24px;
-  width: 24px;
+  height: 38px;
+  width: 38px;
 `;
