@@ -1,38 +1,39 @@
-import { FooterSocial } from './FooterSocial';
+import { FooterSocial } from "./FooterSocial";
 
 import {
   FooterContainer,
-  AreaFooter,
-  UnList,
+  Section,
+  Unlist,
   List,
-  DivNewsLatter,
-  Paragraph,
+  SectionNewsLatter,
+  Title,
   Div,
   Input,
-  Button
-} from './styles';
+  Button,
+} from "./styles";
 
 export function Footer() {
-
   return (
-    <FooterContainer>
-      <AreaFooter>
-        <UnList>
-          <List>Contato</List>
-          <List>Termos de serviço</List>
-          <List>Política de privacidade</List>
-          <List>Cancelamento, troca e reembolso</List>
-        </UnList>
-        <DivNewsLatter>
-          <Paragraph>NewsLatter</Paragraph>
-          <Div>
-            <Input placeholder="Digite seu e-mail" type="e-mail" />
-            <Button>Inscrever</Button>
-          </Div>
-        </DivNewsLatter>
-
-      </AreaFooter>
+    <>
+      <FooterContainer>
+        <Section>
+          <Unlist>
+            <List>Contato</List>
+            <List>Termos de serviço</List>
+            <List>Política de privacidade</List>
+            <List>Cancelamento, troca e reembolso</List>
+          </Unlist>
+          <SectionNewsLatter>
+            <Title>NewsLatter</Title>
+            <Div>
+              <Input placeholder="Digite seu e-mail" type="e-mail" />
+              <Button>Inscrever</Button>
+            </Div>
+          </SectionNewsLatter>
+        </Section>
+      </FooterContainer>
+      <hr />
       <FooterSocial />
-    </FooterContainer>
+    </>
   );
 }
