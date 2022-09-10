@@ -3,11 +3,11 @@ import styled from "styled-components";
 export const FooterContainer = styled.footer`
   width: 100%;
   background: var(--background-footer);
-  padding: 15px 70px;
 `;
 
 export const Section = styled.section`
   max-width: 1440px;
+  padding: 15px 70px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;

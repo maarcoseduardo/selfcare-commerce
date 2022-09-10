@@ -15,7 +15,7 @@ export const AreaSocial = styled.div`
 
 export const UnListSocial = styled.ul`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   max-width: 80px;
@@ -42,12 +42,12 @@ export const ImgSocial = styled.img`
 
 export const UnListPayment = styled.ul`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   max-width: 150px;
   width: 100%;
   align-items: center;
 
-  @media only screen and (min-width: 200px) and (max-width: 370px) {
+  @media only screen and (min-width: 200px) and (max-width: 400px) {
    flex-direction: column; 
   }
 `;
