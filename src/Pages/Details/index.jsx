@@ -23,9 +23,9 @@ export function Details() {
   const { card } = useCard();
   const { productInCart, setProductInCart, setTotal, setSubTotal } = useCart();
   const { identificationPage } = useParams();
+  const tempCard = [...card] 
 
   function AddItemCart(idItem) {
-    const tempCard = [...card] 
     const cardFiltered = tempCard.find((product) => product.id===idItem);
 
     if(cardFiltered){
@@ -46,33 +46,34 @@ export function Details() {
     setTotal(sumProductReduce)
     setSubTotal(sumProductReduce)
   }
+
   return (
     <DivContainer>
-      {card.map((product) => {
-        if (product.id == identificationPage) {
-          return (
-            <Section key={product.id}>
-              <DivImg>
-                <Img src={product.img} alt={product.name} />
-              </DivImg>
-              <Article>
-                <H1>{product.name}</H1>
-                <Div>
-                  <SpanOld>De R${product.oldPrice} por</SpanOld>
-                  <Span>R${product.price}</Span>
-                  <Paragraph>{product.desc}</Paragraph>
-                  <HR />
-                </Div>
-                <DivButton>
-                  <Button onClick={() => AddItemCart(product.id)}>
-                    Adicionar ao carrinho
-                  </Button>
-                </DivButton>
-              </Article>
-            </Section>
-          );
-        }
-      })}
+      {card.map((product) =>
+        product.id == identificationPage ? (
+          <Section key={product.id}>
+            <DivImg>
+              <Img src={product.img} alt={product.name} />
+            </DivImg>
+            <Article>
+              <H1>{product.name}</H1>
+              <Div>
+                <SpanOld>De R${product.oldPrice} por</SpanOld>
+                <Span>R${product.price}</Span>
+                <Paragraph>{product.desc}</Paragraph>
+                <HR />
+              </Div>
+              <DivButton>
+                <Button onClick={() => AddItemCart(product.id)}>
+                  Adicionar ao carrinho
+                </Button>
+              </DivButton>
+            </Article>
+          </Section>
+        ) : (
+          ""
+        )
+      )}
     </DivContainer>
   );
 }
