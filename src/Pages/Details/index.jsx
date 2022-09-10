@@ -21,12 +21,12 @@ import {
 
 export function Details() {
   const { card } = useCard();
-  const { productInCart, setProductInCart } = useCart();
+  const { productInCart, setProductInCart, setTotal, setSubTotal } = useCart();
   const { identificationPage } = useParams();
 
   function AddItemCart(idItem) {
-    const copyCard = [...card] 
-    const cardFiltered = copyCard.find((product) => product.id===idItem);
+    const tempCard = [...card] 
+    const cardFiltered = tempCard.find((product) => product.id===idItem);
 
     if(cardFiltered){
       cardFiltered.inCart = true;
@@ -36,6 +36,15 @@ export function Details() {
     sessionStorage.setItem("IdItemCart", JSON.stringify([...ItemsInCart, cardFiltered]));
     
     setProductInCart([...productInCart, cardFiltered])
+
+    const selectedCard = tempCard.filter((value) => value.inCart ? value.total : '')
+    const selectedCardTotalValue = selectedCard.map( product => product.total)
+    let sumProductReduce = selectedCardTotalValue.reduce(function(sum, count){
+      return sum + count
+    })
+
+    setTotal(sumProductReduce)
+    setSubTotal(sumProductReduce)
   }
   return (
     <DivContainer>

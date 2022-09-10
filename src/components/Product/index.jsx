@@ -22,8 +22,8 @@ export function Product() {
   const { setTotal, setSubTotal } = useCart();
 
   function AddItemCart(idItem) {
-    const copyCard = [...card] 
-    const cardFiltered = copyCard.find((product) => product.id===idItem);
+    const tempCard = [...card] 
+    const cardFiltered = tempCard.find((product) => product.id===idItem);
 
     if(cardFiltered){
       cardFiltered.inCart = true;
@@ -32,7 +32,14 @@ export function Product() {
     const ItemsInCart = JSON.parse(sessionStorage.getItem("IdItemCart")) || [];
     sessionStorage.setItem("IdItemCart", JSON.stringify([...ItemsInCart, cardFiltered]));
     
-    setTotal(cardFiltered.price)
+    const selectedCard = tempCard.filter((value) => value.inCart ? value.total : '')
+    const selectedCardTotalValue = selectedCard.map( product => product.total)
+    let sumProductReduce = selectedCardTotalValue.reduce(function(sum, count){
+      return sum + count
+    })
+
+    setTotal(sumProductReduce)
+    setSubTotal(sumProductReduce)
   }
 
   return (
