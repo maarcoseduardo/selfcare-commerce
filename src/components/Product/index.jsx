@@ -1,6 +1,7 @@
 import React from "react";
 import { useCard } from "../../Context/CardContext";
 import { useCart } from "../../Context/CartContext";
+import { FiShoppingCart, FiSearch } from "react-icons/fi";
 import {
   Unlist,
   ListContainerCard,
@@ -11,6 +12,7 @@ import {
   Paragraph,
   H4,
   Span,
+  SpanSeeMore,
   DivPrices,
   DivButtons,
   AnchorButtons,
@@ -61,10 +63,12 @@ export function Product() {
               </DivPrices>
               <DivButtons>
                 <AnchorButtons to={`/Details/${product.id}`}>
-                  VER MAIS
+                  <Span><FiSearch /></Span>
+                  <SpanSeeMore>VER MAIS</SpanSeeMore>
                 </AnchorButtons>
                 <Button onClick={() => AddItemCart(product.id)}>
-                  ADICIONAR
+                 <Span><FiShoppingCart /></Span>
+                 <Span>ADICIONAR</Span>
                 </Button>
               </DivButtons>
             </ContainerBreathe>
