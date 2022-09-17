@@ -6,7 +6,7 @@ export const Container = styled.section`
     justify-content: space-between;
     max-width: 1440px;
     width: 100%;
-    padding: 15px 70px;
+    padding: 15px 50px;
     margin: 0 auto;
     
     @media screen and (min-width: 200px) and (max-width: 1080px) {
@@ -15,7 +15,7 @@ export const Container = styled.section`
 `;
 
 export const ContainerCart = styled.div`
-    display:block;
+    display: block;
 `;
 
 export const H2 = styled.h2`
@@ -56,7 +56,6 @@ export const TdBuy = styled.td`
     }
 `;
 export const SpanSend = styled.span`
-
 `;
 
 export const SpanBuy = styled.span`

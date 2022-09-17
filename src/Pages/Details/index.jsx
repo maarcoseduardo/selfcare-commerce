@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useCard } from "../../Context/CardContext";
 import { useCart } from "../../Context/CartContext";
+import { FiCheck } from "react-icons/fi";
 
 import {
   DivContainer,
@@ -17,6 +18,7 @@ import {
   HR,
   DivButton,
   Button,
+  ButtonCheck
 } from "./styles";
 
 export function Details() {
@@ -64,9 +66,16 @@ export function Details() {
                 <HR />
               </Div>
               <DivButton>
+              {product.inCart ? (
+                <ButtonCheck disabled>
+                <FiCheck />
+              </ButtonCheck>
+              ) : (
                 <Button onClick={() => AddItemCart(product.id)}>
                   Adicionar ao carrinho
                 </Button>
+              )}
+                
               </DivButton>
             </Article>
           </Section>

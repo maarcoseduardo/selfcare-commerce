@@ -84,6 +84,11 @@ export const AnchorButtons = styled(Link)`
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
+
+    &:hover {
+        filter: brightness(80%);
+        transition: 0.2s;
+    } 
 `;
 
 export const Button = styled.button`
@@ -95,4 +100,25 @@ export const Button = styled.button`
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
+
+    &:hover {
+        filter: brightness(80%);
+        transition: 0.2s;
+    } 
+`;
+
+export const ButtonCheck = styled.button`
+    width: 100%;
+    height: 30px;
+    background: #000;
+    color: #FFF;
+    border-radius: 3px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: not-allowed;
+
+    &:hover {
+        filter: brightness(80%);
+        transition: 0.2s;
+    } 
 `;

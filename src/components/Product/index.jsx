@@ -1,7 +1,7 @@
 import React from "react";
 import { useCard } from "../../Context/CardContext";
 import { useCart } from "../../Context/CartContext";
-import { FiShoppingCart, FiSearch } from "react-icons/fi";
+import { FiShoppingCart, FiSearch, FiCheck } from "react-icons/fi";
 import {
   Unlist,
   ListContainerCard,
@@ -17,6 +17,7 @@ import {
   DivButtons,
   AnchorButtons,
   Button,
+  ButtonCheck
 } from "./styles";
 
 export function Product() {
@@ -26,9 +27,10 @@ export function Product() {
   function AddItemCart(idItem) {
     const tempCard = [...card] 
     const cardFiltered = tempCard.find((product) => product.id===idItem);
-
+    
     if(cardFiltered){
       cardFiltered.inCart = true;
+      cardFiltered.isLoading = true;
     }
 
     const ItemsInCart = JSON.parse(sessionStorage.getItem("IdItemCart")) || [];
@@ -66,10 +68,16 @@ export function Product() {
                   <Span><FiSearch /></Span>
                   <SpanSeeMore>VER MAIS</SpanSeeMore>
                 </AnchorButtons>
+                {product.inCart ? (
+                <ButtonCheck disabled>
+                <Span><FiCheck /></Span>
+               </ButtonCheck>
+                ) : (
                 <Button onClick={() => AddItemCart(product.id)}>
                  <Span><FiShoppingCart /></Span>
                  <Span>ADICIONAR</Span>
                 </Button>
+                )}
               </DivButtons>
             </ContainerBreathe>
           </ListContainerCard>

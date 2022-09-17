@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   H4,
   Img,
@@ -19,9 +19,11 @@ import {
 } from "./styles";
 
 import { useCart } from '../../Context/CartContext';
+import { VoidCart } from "../VoidCart";
 
 export function ItemInCart() {
-  const ItemsInCart = JSON.parse(sessionStorage.getItem("IdItemCart"))
+  
+  const ItemsInCart = JSON.parse(sessionStorage.getItem("IdItemCart")) || []
   const { productInCart, setProductInCart, setTotal, setSubTotal} = useCart();
 
   function AddOneMoreItem(id){
@@ -83,46 +85,48 @@ export function ItemInCart() {
   return (
     <React.Fragment>
       <Container>
-        <Table>
-          <Thead>
-            <Tr>
-              <ThProduto>Produto</ThProduto>
-              <Th>Preço Unitário</Th>
-              <Th>Quantidade</Th>
-              <Th>Preço Total</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {ItemsInCart?.map((product) => {
-              return (
-                <Tr key={product.id}>
-                  <TdProduto>
-                    <DivProduto>
-                      <Img src={product.img} alt={product.name} />
-                      <H4>{product.name}</H4>
-                    </DivProduto>
-                  </TdProduto>
-                  <Td>{product.price}</Td>
-                  <TdGrid>
-                    <DivGrid>
-                      <SpanGrid>
-                        <ButtonAddRemove onClick={() => RemoveOneMoreItem(product.id)}>-</ButtonAddRemove>
-                      </SpanGrid>
-                      <SpanGrid>{product.count}</SpanGrid>
-                      <SpanGrid>
-                        <ButtonAddRemove onClick={() => AddOneMoreItem(product.id)}>+</ButtonAddRemove>
-                      </SpanGrid>
-                    </DivGrid>
+      {ItemsInCart.length > 0 ? (
+         ItemsInCart?.map((product) => (
+          <Table key={product.id}>
+            <Thead>
+              <Tr>
+                <ThProduto>Produto</ThProduto>
+                <Th>Preço Unitário</Th>
+                <Th>Quantidade</Th>
+                <Th>Preço Total</Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              <Tr>
+                <TdProduto>
+                  <DivProduto>
+                    <Img src={product.img} alt={product.name} />
+                    <H4>{product.name}</H4>
+                  </DivProduto>
+                </TdProduto>
+                <Td>R$ {product.price}</Td>
+                <TdGrid>
+                  <DivGrid>
                     <SpanGrid>
-                      <ButtonAddRemove onClick={() => RemoveThisItem(product.id)}>remover</ButtonAddRemove>
+                      <ButtonAddRemove onClick={() => RemoveOneMoreItem(product.id)}>-</ButtonAddRemove>
                     </SpanGrid>
-                  </TdGrid>
-                  <Td>{product.total}</Td>
-                </Tr>
-              );
-            })}
-          </Tbody>
-        </Table>
+                    <SpanGrid>{product.count}</SpanGrid>
+                    <SpanGrid>
+                      <ButtonAddRemove onClick={() => AddOneMoreItem(product.id)}>+</ButtonAddRemove>
+                    </SpanGrid>
+                  </DivGrid>
+                  <SpanGrid>
+                    <ButtonAddRemove onClick={() => RemoveThisItem(product.id)}>Remover</ButtonAddRemove>
+                  </SpanGrid>
+                </TdGrid>
+                <Td>R$ {product.total}</Td>
+              </Tr>
+            </Tbody>
+          </Table>
+        ))
+      )  :  ( 
+      <VoidCart />
+      )}
       </Container>
     </React.Fragment>
   );

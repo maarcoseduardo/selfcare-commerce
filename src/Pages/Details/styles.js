@@ -81,4 +81,29 @@ export const Button = styled.button`
     border-radius: 5px;
     border: none;
     cursor: pointer;
+
+    &:hover {
+        filter: brightness(80%);
+        transition: 0.2s;
+    } 
+    
+`;
+
+export const ButtonCheck = styled.button`
+     max-width: 550px;
+    width: 100%;
+    padding: 10px 0;
+    color: #FFF;
+    background: var(--other-text-green);
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    cursor: not-allowed;
+
+    &:hover {
+        filter: brightness(80%);
+        transition: 0.2s;
+    } 
+
 `;
