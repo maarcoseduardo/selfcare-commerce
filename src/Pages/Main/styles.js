@@ -5,7 +5,6 @@ export const DivContainerPromo = styled.div`
 `;
 
 export const DivPromo = styled.div`
-//Fazer uma div mãe e colocar como display center e pixels 1440px teste
  display: flex;
  justify-content: space-between;
  align-items: center;
@@ -14,9 +13,16 @@ export const DivPromo = styled.div`
  height: 60px;
  margin: 0 auto;
  padding: 15px 70px;
+
+ @media screen and (min-width: 200px) and (max-width: 500px) {
+  padding: 15px 30px;
+ }
 `;
 
 export const H2 = styled.h2`
+  @media screen and (min-width: 200px) and (max-width: 500px) {
+    font-size: 1rem;
+  }
 `;
 
 export const Span = styled.span`
