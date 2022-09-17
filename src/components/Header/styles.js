@@ -1,22 +1,21 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-export const HeaderContainer = styled.header`
-  display: fixed;
-`;
 
-export const HeaderTop = styled.div`
-  height: 50px;
-  max-width: 1440px;
-  width: 100%;
 
-  background: var(--background-page);
-  margin: 0 auto;
-
+export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  height: 50px;
+  max-width: 1440px;
+  width: 100%;
+  background: var(--background-page);
+  margin: 0 auto;
   padding: 15px 70px;
+
+  @media screen and (min-width: 200px) and (max-width: 830px) {
+    padding: 15px 30px;
+  }
 `;
 
 export const DivLogo = styled.div`

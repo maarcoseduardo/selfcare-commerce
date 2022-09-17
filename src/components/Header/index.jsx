@@ -5,7 +5,6 @@ import imgCart from '../../assets/Images/Cart.svg';
 import imgMagnifyingGlass from '../../assets/Images/MagnifyingGlass.svg';
 import {
   HeaderContainer,
-  HeaderTop,
   DivLogo,
   Nav,
   ImgLogo,
@@ -21,8 +20,7 @@ export function Header() {
 
   return (
     <React.Fragment>
-      <HeaderContainer>
-        <HeaderTop>
+        <HeaderContainer>
           <DivLogo>
             <ImgLogo
               src={imgStar}
@@ -49,8 +47,7 @@ export function Header() {
               </List>
             </UnList>
           </Nav>
-        </HeaderTop>
-      </HeaderContainer>
+        </HeaderContainer>
     </React.Fragment>
   );
 }

@@ -75,7 +75,6 @@ export function Details() {
                   Adicionar ao carrinho
                 </Button>
               )}
-                
               </DivButton>
             </Article>
           </Section>

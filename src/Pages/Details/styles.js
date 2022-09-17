@@ -5,6 +5,10 @@ export const DivContainer = styled.div`
     width: 100%;
     padding: 15px 70px;
     margin: 0 auto;  
+
+    @media screen and (min-width: 200px) and (max-width: 500px) {
+        padding: 15px 30px;
+    }
 `;
 
 export const Section = styled.section`
@@ -44,6 +48,9 @@ export const Div = styled.div`
 export const H1 = styled.h1`
     font-size: 3rem;
     margin-bottom: 30px;
+    @media screen and (min-width: 200px) and (max-width: 1080px) {
+        font-size: 2rem;
+    }
 `;
 
 export const SpanOld = styled.span`
@@ -83,10 +90,13 @@ export const Button = styled.button`
     cursor: pointer;
 
     &:hover {
-        filter: brightness(80%);
-        transition: 0.2s;
-    } 
+      filter: brightness(80%);
+      transition: 0.2s;
+    }
     
+    @media screen and (min-width: 200px) and (max-width: 1080px) {
+      font-size: 1rem;
+    }
 `;
 
 export const ButtonCheck = styled.button`
@@ -102,8 +112,8 @@ export const ButtonCheck = styled.button`
     cursor: not-allowed;
 
     &:hover {
-        filter: brightness(80%);
-        transition: 0.2s;
+      filter: brightness(80%);
+      transition: 0.2s;
     } 
 
 `;
