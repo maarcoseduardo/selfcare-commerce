@@ -16,10 +16,10 @@ import {
   SpanInCart,
   Anchor,
 } from "./styles";
-
+import { useCart } from "../../Context/CartContext";
 
 export function Header() {
-
+  const {productInCart} = useCart();
   const ItemsInCart = JSON.parse(sessionStorage.getItem("IdItemCart")) || []
   
   return (
@@ -46,7 +46,7 @@ export function Header() {
                 {ItemsInCart ? (
                   <SpanInCart>{ItemsInCart.length}</SpanInCart>
                 ) : (
-                  ""
+                  <SpanInCart>0</SpanInCart>
                 )}
               </DivInCart>
               <AiOutlineShoppingCart size={21} />

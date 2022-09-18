@@ -22,7 +22,7 @@ import {
 
 export function Product() {
   const { card } = useCard();
-  const { setTotal, setSubTotal } = useCart();
+  const { productInCart, setProductInCart, setTotal, setSubTotal } = useCart();
 
   function AddItemCart(idItem) {
     const tempCard = [...card] 
@@ -32,10 +32,11 @@ export function Product() {
       cardFiltered.inCart = true;
       cardFiltered.isLoading = true;
     }
-
+    
     const ItemsInCart = JSON.parse(sessionStorage.getItem("IdItemCart")) || [];
     sessionStorage.setItem("IdItemCart", JSON.stringify([...ItemsInCart, cardFiltered]));
-    
+    setProductInCart([...productInCart, cardFiltered])
+
     const selectedCard = tempCard.filter((value) => value.inCart ? value.total : '')
     const selectedCardTotalValue = selectedCard.map( product => product.total)
     let sumProductReduce = selectedCardTotalValue.reduce(function(sum, count){

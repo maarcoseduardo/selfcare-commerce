@@ -32,6 +32,7 @@ export function Details() {
 
     if(cardFiltered){
       cardFiltered.inCart = true;
+      cardFiltered.isLoading = true;
     }
 
     const ItemsInCart = JSON.parse(sessionStorage.getItem("IdItemCart")) || [];
