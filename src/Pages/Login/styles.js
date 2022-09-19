@@ -15,6 +15,8 @@ export const Section = styled.section`
   border: none;
   background: #ADDE87;
   border-radius: 20px;
+
+  //transition translate
 `;
 
 export const Form = styled.form`
@@ -49,7 +51,7 @@ export const Input = styled.input`
   height: 70px;
   border-radius: 20px;
   border: none;
-  color: white;
+  color: var(--other-text-green);
   font-weight: bold;
   background: white;
 
