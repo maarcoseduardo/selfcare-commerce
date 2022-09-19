@@ -26,7 +26,7 @@ export function ItemInCart() {
   const ItemsInCart = JSON.parse(sessionStorage.getItem("IdItemCart")) || []
   const { productInCart, setProductInCart, setTotal, setSubTotal} = useCart();
 
-  function AddOneMoreItem(id){
+  function IncrementItem(id){
     const tempProduct = [...ItemsInCart]
     const selectedProduct = tempProduct.find((product) => product.id===id)
     const index = tempProduct.indexOf(selectedProduct);
@@ -47,7 +47,7 @@ export function ItemInCart() {
     setSubTotal(sumProductReduce)
   }
 
-  function RemoveOneMoreItem(id){
+  function DecrementItem(id){
     const tempProduct = [...ItemsInCart]
     const quantityItemZero = 0;
     const selectedProduct = tempProduct.find((product) => product.id===id)
@@ -61,11 +61,10 @@ export function ItemInCart() {
     setProductInCart([...productInCart, tempProduct])
 
     if(product.count <= quantityItemZero){
-      RemoveThisItem(id)
+      RemoveItem(id)
     }
 
     const valueTotal = tempProduct.map((value) => value.total)
-    console.log(valueTotal);
     let sumProductReduce = valueTotal.reduce(function(sum, count){
       return sum + count
     })
@@ -73,13 +72,28 @@ export function ItemInCart() {
     setSubTotal(sumProductReduce)
   }
 
-  function RemoveThisItem(id){
+  function RemoveItem(id){
     const tempProduct = [...ItemsInCart]
     const selectedProduct = tempProduct.filter((product) => product.id!==id)
 
+    if(selectedProduct.length <= 0){
     sessionStorage.removeItem("IdItemCart")
     sessionStorage.setItem("IdItemCart", JSON.stringify(selectedProduct))
     setProductInCart([...productInCart, selectedProduct])
+    setTotal([0])
+    setSubTotal([0])
+
+  } else {
+      const valueTotal = selectedProduct.map((value) => value.total)
+      let sumProductReduce = valueTotal.reduce(function(sum, count){
+      return sum + count
+    })
+    sessionStorage.removeItem("IdItemCart")
+    sessionStorage.setItem("IdItemCart", JSON.stringify(selectedProduct))
+    setProductInCart([...productInCart, selectedProduct])
+    setTotal(sumProductReduce)
+    setSubTotal(sumProductReduce)
+    }
   }
 
   return (
@@ -108,15 +122,15 @@ export function ItemInCart() {
                 <TdGrid>
                   <DivGrid>
                     <SpanGrid>
-                      <ButtonAddRemove onClick={() => RemoveOneMoreItem(product.id)}>-</ButtonAddRemove>
+                      <ButtonAddRemove onClick={() => DecrementItem(product.id)}>-</ButtonAddRemove>
                     </SpanGrid>
                     <SpanGrid>{product.count}</SpanGrid>
                     <SpanGrid>
-                      <ButtonAddRemove onClick={() => AddOneMoreItem(product.id)}>+</ButtonAddRemove>
+                      <ButtonAddRemove onClick={() => IncrementItem(product.id)}>+</ButtonAddRemove>
                     </SpanGrid>
                   </DivGrid>
                   <SpanGrid>
-                    <ButtonAddRemove onClick={() => RemoveThisItem(product.id)}>Remover</ButtonAddRemove>
+                    <ButtonAddRemove onClick={() => RemoveItem(product.id)}>Remover</ButtonAddRemove>
                   </SpanGrid>
                 </TdGrid>
                 <Td>R$ {product.total}</Td>

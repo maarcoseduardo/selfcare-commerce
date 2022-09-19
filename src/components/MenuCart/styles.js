@@ -46,15 +46,20 @@ export const Span = styled.span`
 `;
 
 export const Input = styled.input`
-    width: 90px;
+    max-width: 90px;
+    width: 100%;
     height: 30px;
     margin: 0 10px;
 `;
 
 export const Button = styled.button`
     width: 100%;
-    padding: 5px 20px;
-    background: var(--other-text-green);
+    height: 25px;
+    margin-top: 1rem;
     font-size: 1rem;
+    border: none;
+    border-radius: 5px;
     font-weight: bold;
+    color: white;
+    background: var(--other-text-green);
 `;

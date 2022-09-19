@@ -43,7 +43,7 @@ export function Header() {
           <ListCart>
             <Anchor to="/cart">
               <DivInCart>
-                {ItemsInCart ? (
+                {productInCart ? (
                   <SpanInCart>{ItemsInCart.length}</SpanInCart>
                 ) : (
                   <SpanInCart>0</SpanInCart>
