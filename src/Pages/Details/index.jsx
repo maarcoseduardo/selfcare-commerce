@@ -13,6 +13,7 @@ import {
   H1,
   Div,
   SpanOld,
+  Strong,
   Span,
   Paragraph,
   HR,
@@ -61,7 +62,7 @@ export function Details() {
             <Article>
               <H1>{product.name}</H1>
               <Div>
-                <SpanOld>De R${product.oldPrice} por</SpanOld>
+                <SpanOld>De <Strong>R${product.oldPrice}</Strong> por</SpanOld>
                 <Span>R${product.price}</Span>
                 <Paragraph>{product.desc}</Paragraph>
                 <HR />

@@ -61,7 +61,7 @@ export function Product() {
                 <H4>{product.name}</H4>
               </DivName>
               <DivPrices>
-                <Paragraph>R$ {product.price}</Paragraph>
+                <Paragraph>R$ {product.price} <span>ou</span></Paragraph>
                 <Span>{product.installments}</Span>
               </DivPrices>
               <DivButtons>

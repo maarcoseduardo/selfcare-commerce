@@ -58,11 +58,18 @@ export const SpanOld = styled.span`
     margin-bottom: 15px;
 `;
 
+export const Strong = styled.strong`
+    color: red;
+    text-decoration: line-through;
+`;
+
+
 export const Span = styled.span`
     display: block;
     margin-bottom: 15px;
     font-size: 1.5em;
     font-weight: bold;
+    color: var(--other-text-green);
 `;
 
 export const HR = styled.hr`
