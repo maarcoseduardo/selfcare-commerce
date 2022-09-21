@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import { Link } from "react-router-dom";
+import styled, { keyframes } from "styled-components";
 
 export const Container = styled.div`
   max-width: 1440px;
@@ -75,13 +76,33 @@ export const Button = styled.button`
     } 
 `;
 
-export const Anchor = styled.a`
+export const Anchor = styled(Link)`
   color: white;
   font-weight: bold;
   text-align: center;
   cursor: pointer;
+  text-decoration: none;
 
   &:hover{
     color: var(--other-text-green);
   }
+`;
+
+const rotate = keyframes`
+from {
+    transform: rotate(0deg);
+  }
+  
+  to { 
+    transform: rotate(360deg);
+  }
+`;
+
+export const Loading = styled.div`
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  animation: ${rotate} 1s linear infinite;
 `;
