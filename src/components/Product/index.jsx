@@ -22,30 +22,7 @@ import {
 
 export function Product() {
   const { card } = useCard();
-  const { productInCart, setProductInCart, setTotal, setSubTotal } = useCart();
-
-  function AddItemCart(idItem) {
-    const tempCard = [...card] 
-    const cardFiltered = tempCard.find((product) => product.id===idItem);
-    
-    if(cardFiltered){
-      cardFiltered.inCart = true;
-      cardFiltered.isLoading = true;
-    }
-    
-    const ItemsInCart = JSON.parse(sessionStorage.getItem("IdItemCart")) || [];
-    sessionStorage.setItem("IdItemCart", JSON.stringify([...ItemsInCart, cardFiltered]));
-    setProductInCart([...productInCart, cardFiltered])
-
-    const selectedCard = tempCard.filter((value) => value.inCart ? value.total : '')
-    const selectedCardTotalValue = selectedCard.map( product => product.total)
-    let sumProductReduce = selectedCardTotalValue.reduce(function(sum, count){
-      return sum + count
-    })
-
-    setTotal(sumProductReduce)
-    setSubTotal(sumProductReduce)
-  }
+  const { AddItemCart } = useCart();
 
   return (
     <React.Fragment>
@@ -66,12 +43,16 @@ export function Product() {
               </DivPrices>
               <DivButtons>
                 <AnchorButtons to={`/Details/${product.id}`}>
-                  <Span><FiSearch /></Span>
+                  <Span>
+                    <FiSearch />
+                  </Span>
                   <SpanSeeMore>VER MAIS</SpanSeeMore>
                 </AnchorButtons>
                 {product.inCart ? (
                 <ButtonCheck disabled>
-                <Span><FiCheck /></Span>
+                <Span>
+                  <FiCheck />
+                </Span>
                </ButtonCheck>
                 ) : (
                 <Button onClick={() => AddItemCart(product.id)}>

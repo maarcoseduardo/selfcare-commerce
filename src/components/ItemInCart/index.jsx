@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   H4,
   Img,
@@ -23,78 +23,7 @@ import { VoidCart } from "../VoidCart";
 
 export function ItemInCart() {
   
-  const ItemsInCart = JSON.parse(sessionStorage.getItem("IdItemCart")) || []
-  const { productInCart, setProductInCart, setTotal, setSubTotal} = useCart();
-
-  function IncrementItem(id){
-    const tempProduct = [...ItemsInCart]
-    const selectedProduct = tempProduct.find((product) => product.id===id)
-    const index = tempProduct.indexOf(selectedProduct);
-    const product = tempProduct[index];
-
-    product.count = product.count + 1
-    product.total = product.price * product.count
-
-    sessionStorage.setItem("IdItemCart", JSON.stringify(tempProduct))
-    setProductInCart([...productInCart, tempProduct])
-    
-    const valueTotal = tempProduct.map((value) => value.total)
-    let sumProductReduce = valueTotal.reduce(function(sum, count){
-      return sum + count
-    })
-
-    setTotal(sumProductReduce)
-    setSubTotal(sumProductReduce)
-  }
-
-  function DecrementItem(id){
-    const tempProduct = [...ItemsInCart]
-    const quantityItemZero = 0;
-    const selectedProduct = tempProduct.find((product) => product.id===id)
-    const index = tempProduct.indexOf(selectedProduct);
-    const product = tempProduct[index];
-
-    product.count = product.count - 1
-    product.total = product.price * product.count
-    
-    sessionStorage.setItem("IdItemCart", JSON.stringify(tempProduct))
-    setProductInCart([...productInCart, tempProduct])
-
-    if(product.count <= quantityItemZero){
-      RemoveItem(id)
-    }
-
-    const valueTotal = tempProduct.map((value) => value.total)
-    let sumProductReduce = valueTotal.reduce(function(sum, count){
-      return sum + count
-    })
-    setTotal(sumProductReduce)
-    setSubTotal(sumProductReduce)
-  }
-
-  function RemoveItem(id){
-    const tempProduct = [...ItemsInCart]
-    const selectedProduct = tempProduct.filter((product) => product.id!==id)
-
-    if(selectedProduct.length <= 0){
-    sessionStorage.removeItem("IdItemCart")
-    sessionStorage.setItem("IdItemCart", JSON.stringify(selectedProduct))
-    setProductInCart([...productInCart, selectedProduct])
-    setTotal([0])
-    setSubTotal([0])
-
-  } else {
-      const valueTotal = selectedProduct.map((value) => value.total)
-      let sumProductReduce = valueTotal.reduce(function(sum, count){
-      return sum + count
-    })
-    sessionStorage.removeItem("IdItemCart")
-    sessionStorage.setItem("IdItemCart", JSON.stringify(selectedProduct))
-    setProductInCart([...productInCart, selectedProduct])
-    setTotal(sumProductReduce)
-    setSubTotal(sumProductReduce)
-    }
-  }
+  const { ItemsInCart, IncrementItem, DecrementItem, RemoveItem } = useCart();
 
   return (
     <React.Fragment>
