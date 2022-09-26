@@ -11,7 +11,6 @@ export const Container = styled.div`
 
 export const Table = styled.table`
   width: 100%;
-  border-radius: 20px;
   @media screen and (min-width: 200px) and (max-width: 550px) {
     display: flex;
     justify-content: space-between;
@@ -28,7 +27,7 @@ export const Tr = styled.tr`
 `;
 
 export const Th = styled.th`
-@media screen and (min-width: 200px) and (max-width: 550px) {
+  @media screen and (min-width: 200px) and (max-width: 550px) {
     display: flex;
     height: 80px;
     width: 120px;
@@ -129,4 +128,11 @@ export const ButtonAddRemove = styled.button`
     font-size:16px;
     font-weight: bold;
     cursor: pointer;
+`;
+
+export const DivButotnRemove = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  gap: 5px;
 `;

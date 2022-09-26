@@ -89,7 +89,7 @@ export function CartProvider({ children }) {
     let product = tempProduct[index];
     
     product.inCart = false
-
+    
     let productRemoved = tempProduct.filter((product) => product.inCart)
     const valueTotal = productRemoved.map((value) => value.total)
       sumProductReduce = valueTotal.reduce((sum, count) => sum + count, 0)

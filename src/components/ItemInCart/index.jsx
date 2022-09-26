@@ -4,6 +4,7 @@ import {
   Img,
   DivGrid,
   SpanGrid,
+  DivButotnRemove,
   ButtonAddRemove,
   Container,
   Table,
@@ -17,7 +18,7 @@ import {
   TdGrid,
   TdProduto,
 } from "./styles";
-
+import { FaTrash } from "react-icons/fa";
 import { useCart } from '../../Context/CartContext';
 import { VoidCart } from "../VoidCart";
 
@@ -59,7 +60,12 @@ export function ItemInCart() {
                     </SpanGrid>
                   </DivGrid>
                   <SpanGrid>
-                    <ButtonAddRemove onClick={() => RemoveItem(product.id)}>Remover</ButtonAddRemove>
+                    <ButtonAddRemove onClick={() => RemoveItem(product.id)}>
+                      <DivButotnRemove>
+                        <span><FaTrash size={15}/></span> 
+                        Remover
+                      </DivButotnRemove>
+                      </ButtonAddRemove>
                   </SpanGrid>
                 </TdGrid>
                 <Td>R$ {product.total}</Td>
