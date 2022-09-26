@@ -11,15 +11,15 @@ export function CartProvider({ children }) {
 
   function AddItemCart(idItem) {
     const tempCard = [...card] 
-    const cardFiltered = tempCard.find((product) => product.id===idItem);
+    const selectedProduct = tempCard.find((product) => product.id===idItem);
     
     if(productInCart.length <= 0) {
       
-      if(cardFiltered){
-        cardFiltered.inCart = true;
+      if(selectedProduct){
+        selectedProduct.inCart = true;
       }
       
-      setProductInCart([...productInCart, cardFiltered])
+      setProductInCart([...productInCart, selectedProduct])
       const selectedCard = tempCard.filter((value) => value.inCart==true ? value.total : '')
       const selectedCardTotalValue = selectedCard.map( product => product.total)
       sumProductReduce = selectedCardTotalValue.reduce((sum, count) => sum + count, 0)
@@ -28,14 +28,14 @@ export function CartProvider({ children }) {
 
     } else {
 
-      if(cardFiltered){
-        cardFiltered.inCart = true; 
+      if(selectedProduct){
+        selectedProduct.inCart = true; 
       }
-      setProductInCart([...productInCart, cardFiltered])
+      setProductInCart([...productInCart, selectedProduct])
       const selectedCard = productInCart.filter((value) => value.inCart==true ? value.total : '')
       const selectedCardTotalValue = selectedCard.map( product => product.total)
       sumProductReduce = selectedCardTotalValue.reduce((sum, count) => sum + count, 0)
-      sumProductReduce += cardFiltered.total 
+      sumProductReduce += selectedProduct.total 
       setTotal(sumProductReduce)
       setSubTotal(sumProductReduce)
     }
@@ -85,6 +85,7 @@ export function CartProvider({ children }) {
   function RemoveItem(id){
     const tempProduct = [...productInCart]
     const selectedProduct = tempProduct.find((product) => product.id===id)
+    
     const index = tempProduct.indexOf(selectedProduct)
     let product = tempProduct[index];
     
@@ -93,7 +94,9 @@ export function CartProvider({ children }) {
     let productRemoved = tempProduct.filter((product) => product.inCart)
     const valueTotal = productRemoved.map((value) => value.total)
       sumProductReduce = valueTotal.reduce((sum, count) => sum + count, 0)
-    
+    console.log(productRemoved);
+    console.log(valueTotal);
+    console.log(product);
     setProductInCart(productRemoved)
     setTotal(sumProductReduce)
     setSubTotal(sumProductReduce)
