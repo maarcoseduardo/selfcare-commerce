@@ -23,13 +23,13 @@ import { VoidCart } from "../VoidCart";
 
 export function ItemInCart() {
   
-  const { ItemsInCart, IncrementItem, DecrementItem, RemoveItem } = useCart();
+  const { productInCart, IncrementItem, DecrementItem, RemoveItem } = useCart();
 
   return (
     <React.Fragment>
       <Container>
-      {ItemsInCart.length > 0 ? (
-         ItemsInCart?.map((product) => (
+      {productInCart.length > 0 ? (
+         productInCart?.map((product) => (
           <Table key={product.id}>
             <Thead>
               <Tr>

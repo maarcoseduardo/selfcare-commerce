@@ -7,27 +7,22 @@ export function CartProvider({ children }) {
   const [ total, setTotal ] = useState([0])
   const [ subTotal, setSubTotal ] = useState([0]);
   const { card } = useCard();
-  const ItemsInCart = JSON.parse(sessionStorage.getItem("IdItemCart")) || []
   let sumProductReduce;
 
   function AddItemCart(idItem) {
     const tempCard = [...card] 
     const cardFiltered = tempCard.find((product) => product.id===idItem);
-    const tempProduct = [...ItemsInCart]
     
-    if(ItemsInCart.length <= 0) {
+    if(productInCart.length <= 0) {
       
       if(cardFiltered){
         cardFiltered.inCart = true;
       }
       
-      sessionStorage.setItem("IdItemCart", JSON.stringify([...ItemsInCart, cardFiltered]));
       setProductInCart([...productInCart, cardFiltered])
       const selectedCard = tempCard.filter((value) => value.inCart==true ? value.total : '')
       const selectedCardTotalValue = selectedCard.map( product => product.total)
-      sumProductReduce = selectedCardTotalValue.reduce(function(sum, count){
-        return sum + count
-      })
+      sumProductReduce = selectedCardTotalValue.reduce((sum, count) => sum + count, 0)
       setTotal(sumProductReduce)
       setSubTotal(sumProductReduce)
 
@@ -36,14 +31,10 @@ export function CartProvider({ children }) {
       if(cardFiltered){
         cardFiltered.inCart = true; 
       }
-      
-      sessionStorage.setItem("IdItemCart", JSON.stringify([...ItemsInCart, cardFiltered]));
       setProductInCart([...productInCart, cardFiltered])
-      const selectedCard = tempProduct.filter((value) => value.inCart==true ? value.total : '')
+      const selectedCard = productInCart.filter((value) => value.inCart==true ? value.total : '')
       const selectedCardTotalValue = selectedCard.map( product => product.total)
-      sumProductReduce = selectedCardTotalValue.reduce(function(sum, count){
-        return sum + count
-      })
+      sumProductReduce = selectedCardTotalValue.reduce((sum, count) => sum + count, 0)
       sumProductReduce += cardFiltered.total 
       setTotal(sumProductReduce)
       setSubTotal(sumProductReduce)
@@ -51,7 +42,7 @@ export function CartProvider({ children }) {
   }
 
   function IncrementItem(id){
-    const tempProduct = [...ItemsInCart]
+    const tempProduct = [...productInCart]
     const selectedProduct = tempProduct.find((product) => product.id===id)
     const index = tempProduct.indexOf(selectedProduct);
     const product = tempProduct[index];
@@ -59,20 +50,16 @@ export function CartProvider({ children }) {
     product.count = product.count + 1
     product.total = product.price * product.count
 
-    sessionStorage.setItem("IdItemCart", JSON.stringify(tempProduct))
-    setProductInCart([...productInCart, tempProduct])
-    
+    console.log(productInCart)
+    setProductInCart(tempProduct)
     const valueTotal = tempProduct.map((value) => value.total)
-    sumProductReduce = valueTotal.reduce(function(sum, count){
-      return sum + count
-    })
+    sumProductReduce = valueTotal.reduce((sum, count) => sum + count, 0)
     setTotal(sumProductReduce)
     setSubTotal(sumProductReduce)
   }
 
-
   function DecrementItem(id){
-    const tempProduct = [...ItemsInCart]
+    const tempProduct = [...productInCart]
     const quantityItemZero = 0;
     const selectedProduct = tempProduct.find((product) => product.id===id)
     const index = tempProduct.indexOf(selectedProduct);
@@ -81,50 +68,35 @@ export function CartProvider({ children }) {
     product.count = product.count - 1
     product.total = product.price * product.count
     
-    sessionStorage.setItem("IdItemCart", JSON.stringify(tempProduct))
-    setProductInCart([...productInCart, tempProduct])
+    setProductInCart(tempProduct)
+    const valueTotal = tempProduct.map((value) => value.total)
+    sumProductReduce = valueTotal.reduce((sum, count) => sum + count, 0)
 
     if(product.count <= quantityItemZero){
       RemoveItem(id)
+      product.count = 1
+      product.total = selectedProduct.price
     }
-
-    const valueTotal = tempProduct.map((value) => value.total)
-    sumProductReduce = valueTotal.reduce(function(sum, count){
-      return sum + count
-    })
+    
     setTotal(sumProductReduce)
     setSubTotal(sumProductReduce)
   }
 
   function RemoveItem(id){
-    const tempProduct = [...ItemsInCart]
+    const tempProduct = [...productInCart]
     const selectedProduct = tempProduct.find((product) => product.id===id)
-    const selectedProductVoid = tempProduct.filter((product) => product.id!==id)
-    
     const index = tempProduct.indexOf(selectedProduct)
     let product = tempProduct[index];
     
     product.inCart = false
 
-    if(selectedProductVoid.length <= 0){
-    sessionStorage.removeItem("IdItemCart")
-    sessionStorage.setItem("IdItemCart", JSON.stringify([]))
-    setProductInCart([])
-    setTotal([0])
-    setSubTotal([0])
-  } else {
     let productRemoved = tempProduct.filter((product) => product.inCart)
-      const valueTotal = productRemoved.map((value) => value.total)
-      sumProductReduce = valueTotal.reduce(function(sum, count){
-      return sum + count
-    })
-    sessionStorage.removeItem("IdItemCart")
-    sessionStorage.setItem("IdItemCart", JSON.stringify(productRemoved))
+    const valueTotal = productRemoved.map((value) => value.total)
+      sumProductReduce = valueTotal.reduce((sum, count) => sum + count, 0)
     
     setProductInCart(productRemoved)
     setTotal(sumProductReduce)
     setSubTotal(sumProductReduce)
-    }
   }
 
   return (
@@ -137,7 +109,6 @@ export function CartProvider({ children }) {
         subTotal, 
         setSubTotal,
         AddItemCart,
-        ItemsInCart,
         IncrementItem,
         DecrementItem,
         RemoveItem
@@ -151,7 +122,7 @@ export function CartProvider({ children }) {
 export function useCart() {
   const context = useContext(CartContext);
 
-  const { productInCart, setProductInCart, total, setTotal, subTotal, setSubTotal, AddItemCart, ItemsInCart, IncrementItem, DecrementItem, RemoveItem } = context;
+  const { productInCart, setProductInCart, total, setTotal, subTotal, setSubTotal, AddItemCart, IncrementItem, DecrementItem, RemoveItem } = context;
 
-  return { productInCart, setProductInCart, total, setTotal, subTotal, setSubTotal, AddItemCart, ItemsInCart, IncrementItem, DecrementItem, RemoveItem };
+  return { productInCart, setProductInCart, total, setTotal, subTotal, setSubTotal, AddItemCart, IncrementItem, DecrementItem, RemoveItem };
 }

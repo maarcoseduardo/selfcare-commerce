@@ -19,8 +19,7 @@ import {
 import { useCart } from "../../Context/CartContext";
 
 export function Header() {
-  const {productInCart} = useCart();
-  const ItemsInCart = JSON.parse(sessionStorage.getItem("IdItemCart")) || []
+  const {productInCart, ItemsInCart} = useCart();
   
   return (
     <React.Fragment>
@@ -44,7 +43,7 @@ export function Header() {
             <Anchor to="/cart">
               <DivInCart>
                 {productInCart ? (
-                  <SpanInCart>{ItemsInCart.length}</SpanInCart>
+                  <SpanInCart>{productInCart.length}</SpanInCart>
                 ) : (
                   <SpanInCart>0</SpanInCart>
                 )}

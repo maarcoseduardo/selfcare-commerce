@@ -19,13 +19,15 @@ export const Table = styled.table`
     display: flex;
     justify-content: space-between;
   }
+  &:nth-child(2n) {
+      background-color: grey;
+    }
 `;
 
 export const Thead = styled.thead`
 `;
 
 export const Tr = styled.tr`
-
 `;
 
 export const Th = styled.th`

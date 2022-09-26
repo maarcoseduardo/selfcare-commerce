@@ -15,7 +15,3 @@ export const Container = styled.section`
     padding: 15px 30px;
   }
 `;
-
-export const ContainerCart = styled.div`
-  display: block;
-`;

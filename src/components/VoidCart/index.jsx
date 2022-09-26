@@ -12,7 +12,7 @@ export function VoidCart() {
       <Content>
         <H1>Sem itens no carrinho!</H1>
         <Paragraph>
-          Volte para a página <Anchor to="/">Home</Anchor> e adicione ítens ao carrinho.
+          Volte para a página <Anchor to="/">Home</Anchor> e adicione itens ao carrinho.
         </Paragraph>
       </Content>
     </Container>

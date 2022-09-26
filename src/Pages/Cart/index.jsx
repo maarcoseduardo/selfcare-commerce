@@ -10,9 +10,7 @@ export function Cart() {
   
   return (
     <Container>
-      <ContainerCart>
         <ItemInCart />
-      </ContainerCart>
       <MenuCart />
     </Container>
   );
