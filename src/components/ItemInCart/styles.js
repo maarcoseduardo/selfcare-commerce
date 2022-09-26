@@ -2,12 +2,8 @@ import styled from "styled-components";
 
 
 export const Container = styled.div`
-  max-width: 730px;
+  max-width: 900px;
   width: 100%;
-
-  @media screen and (min-width: 1080px) and (max-width: 1250px) {
-    max-width: 600px;
-  }
   @media screen and (min-width: 550px) and (max-width: 1080px) {
     max-width: 1080px;
   }
@@ -15,12 +11,13 @@ export const Container = styled.div`
 
 export const Table = styled.table`
   width: 100%;
+  border-radius: 20px;
   @media screen and (min-width: 200px) and (max-width: 550px) {
     display: flex;
     justify-content: space-between;
   }
-  &:nth-child(2n) {
-      background-color: grey;
+   &:nth-child(2n) {
+    background: #C3FF99;
     }
 `;
 
@@ -128,7 +125,7 @@ export const ButtonAddRemove = styled.button`
     width: 100%;
     background: none;
     border: none;
-    color: green;
+    color: #2B7A0B;
     font-size:16px;
     font-weight: bold;
     cursor: pointer;

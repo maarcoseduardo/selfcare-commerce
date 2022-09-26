@@ -8,7 +8,7 @@ export const Container = styled.div`
     box-shadow: 1px 1px 10px var(--other-text-green);
 
     @media screen and (min-width: 200px) and (max-width: 1080px) {
-        max-width: 940px;
+        max-width: 1200px;
     }
 `;
 
@@ -19,7 +19,7 @@ export const H3 = styled.h3`
 
 export const Table = styled.table`
     width: 100%;
-    height:300px;
+    height: 300px;
     border-collapse: collapse;
 `;
 
