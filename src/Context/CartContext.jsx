@@ -94,9 +94,6 @@ export function CartProvider({ children }) {
     let productRemoved = tempProduct.filter((product) => product.inCart)
     const valueTotal = productRemoved.map((value) => value.total)
       sumProductReduce = valueTotal.reduce((sum, count) => sum + count, 0)
-    console.log(productRemoved);
-    console.log(valueTotal);
-    console.log(product);
     setProductInCart(productRemoved)
     setTotal(sumProductReduce)
     setSubTotal(sumProductReduce)
