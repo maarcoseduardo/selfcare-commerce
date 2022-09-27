@@ -35,6 +35,10 @@ export const ListSocial = styled.li`
   contrast(91%);
 `;
 
+export const Anchor = styled.a`
+
+`;
+
 export const ImgSocial = styled.img`
   height: 28px;
   width: 28px;

@@ -1,14 +1,14 @@
-import FacebookIcon from "../../../assets/Images/Facebook.svg";
-import InstagramIcon from "../../../assets/Images/Instagram.svg";
 import MasterCardIcon from "../../../assets/Images/MasterCard.svg";
 import PayPalIcon from "../../../assets/Images/PayPal.svg";
 import VisaIcon from "../../../assets/Images/Visa.svg";
+import { IoLogoLinkedin } from "react-icons/io";
+import { BsInstagram } from "react-icons/bs";
 import {
   FooterSocialPayments,
   AreaSocial,
   UnListSocial,
   ListSocial,
-  ImgSocial,
+  Anchor,
   UnListPayment,
   ListPayment,
   ImgPayment,
@@ -20,10 +20,14 @@ export function FooterSocial() {
       <AreaSocial>
         <UnListSocial>
           <ListSocial>
-            <ImgSocial src={InstagramIcon} alt="Icon Instagram" />
+            <Anchor href="https://www.instagram.com/maarcoseduardo/">
+              <BsInstagram size={27} color="green" />
+            </Anchor>
           </ListSocial>
           <ListSocial>
-            <ImgSocial src={FacebookIcon} alt="Icon Facebook" />
+            <Anchor href="https://www.linkedin.com/in/maarcoseduardo/">
+              <IoLogoLinkedin size={35} color="green" />
+            </Anchor>
           </ListSocial>
         </UnListSocial>
         <UnListPayment>

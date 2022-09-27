@@ -4,8 +4,7 @@ import { useCart } from "../../Context/CartContext";
 import { FiShoppingCart, FiSearch, FiCheck } from "react-icons/fi";
 import {
   Unlist,
-  ListContainerCard,
-  ContainerBreathe,
+  List,
   Anchor,
   Img,
   DivName,
@@ -17,7 +16,7 @@ import {
   DivButtons,
   AnchorButtons,
   Button,
-  ButtonCheck
+  ButtonCheck,
 } from "./styles";
 
 export function Product() {
@@ -28,41 +27,43 @@ export function Product() {
     <React.Fragment>
       <Unlist>
         {card.map((product) => (
-          <ListContainerCard key={product.id}>
-            <ContainerBreathe>
-              <Anchor to={`/Details/${product.id}`}>
-                <Img src={product.img} alt={product.name} />
-              </Anchor>
+          <List key={product.id}>
+            <Anchor to={`/Details/${product.id}`}>
+              <Img src={product.img} alt={product.name} />
               <DivName>
                 <Paragraph>{product.category}</Paragraph>
                 <H4>{product.name}</H4>
               </DivName>
               <DivPrices>
-                <Paragraph>R$ {product.price} <span>ou</span></Paragraph>
+                <Paragraph>
+                  R$ {product.price} <span>ou</span>
+                </Paragraph>
                 <Span>{product.installments}</Span>
               </DivPrices>
-              <DivButtons>
-                <AnchorButtons to={`/Details/${product.id}`}>
-                  <Span>
-                    <FiSearch />
-                  </Span>
-                  <SpanSeeMore>VER MAIS</SpanSeeMore>
-                </AnchorButtons>
-                {product.inCart ? (
-                <ButtonCheck disabled>
+            </Anchor>
+            <DivButtons>
+              <AnchorButtons to={`/Details/${product.id}`}>
                 <Span>
-                  <FiCheck />
+                  <FiSearch />
                 </Span>
-               </ButtonCheck>
-                ) : (
+                <SpanSeeMore>VER MAIS</SpanSeeMore>
+              </AnchorButtons>
+              {product.inCart ? (
+                <ButtonCheck disabled>
+                  <Span>
+                    <FiCheck />
+                  </Span>
+                </ButtonCheck>
+              ) : (
                 <Button onClick={() => AddItemCart(product.id)}>
-                 <Span><FiShoppingCart /></Span>
-                 <Span>ADICIONAR</Span>
+                  <Span>
+                    <FiShoppingCart />
+                  </Span>
+                  <Span>ADICIONAR</Span>
                 </Button>
-                )}
-              </DivButtons>
-            </ContainerBreathe>
-          </ListContainerCard>
+              )}
+            </DivButtons>
+          </List>
         ))}
       </Unlist>
     </React.Fragment>

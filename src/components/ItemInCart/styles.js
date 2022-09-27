@@ -130,9 +130,12 @@ export const ButtonAddRemove = styled.button`
     cursor: pointer;
 `;
 
-export const DivButotnRemove = styled.div`
+export const DivButtonsRemove = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 5px;
   gap: 5px;
+`;
+
+export const SpanButtons = styled.span`
 `;

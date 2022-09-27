@@ -4,7 +4,8 @@ import {
   Img,
   DivGrid,
   SpanGrid,
-  DivButotnRemove,
+  DivButtonsRemove,
+  SpanButtons,
   ButtonAddRemove,
   Container,
   Table,
@@ -61,10 +62,12 @@ export function ItemInCart() {
                   </DivGrid>
                   <SpanGrid>
                     <ButtonAddRemove onClick={() => RemoveItem(product.id)}>
-                      <DivButotnRemove>
-                        <span><FaTrash size={15}/></span> 
+                      <DivButtonsRemove>
+                        <SpanButtons>
+                          <FaTrash size={15}/>
+                        </SpanButtons> 
                         Remover
-                      </DivButotnRemove>
+                      </DivButtonsRemove>
                       </ButtonAddRemove>
                   </SpanGrid>
                 </TdGrid>
