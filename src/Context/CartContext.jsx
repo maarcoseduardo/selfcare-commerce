@@ -17,8 +17,10 @@ export function CartProvider({ children }) {
       
       if(selectedProduct){
         selectedProduct.inCart = true;
+        selectedProduct.count = 1;
+        selectedProduct.total = selectedProduct.price;
       }
-      
+
       setProductInCart([...productInCart, selectedProduct])
       const selectedCard = tempCard.filter((value) => value.inCart==true ? value.total : '')
       const selectedCardTotalValue = selectedCard.map( product => product.total)
@@ -29,7 +31,9 @@ export function CartProvider({ children }) {
     } else {
 
       if(selectedProduct){
-        selectedProduct.inCart = true; 
+        selectedProduct.inCart = true;
+        selectedProduct.count = 1;
+        selectedProduct.total = selectedProduct.price; 
       }
       setProductInCart([...productInCart, selectedProduct])
       const selectedCard = productInCart.filter((value) => value.inCart==true ? value.total : '')
@@ -50,7 +54,6 @@ export function CartProvider({ children }) {
     product.count = product.count + 1
     product.total = product.price * product.count
 
-    console.log(productInCart)
     setProductInCart(tempProduct)
     const valueTotal = tempProduct.map((value) => value.total)
     sumProductReduce = valueTotal.reduce((sum, count) => sum + count, 0)
