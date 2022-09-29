@@ -19,7 +19,7 @@ import {
 import { useCart } from "../../Context/CartContext";
 
 export function Header() {
-  const {productInCart, ItemsInCart} = useCart();
+  const { productInCart } = useCart();
   
   return (
     <React.Fragment>
@@ -42,8 +42,8 @@ export function Header() {
           <ListCart>
             <Anchor to="/cart">
               <DivInCart>
-                {productInCart ? (
-                  <SpanInCart>{productInCart.length}</SpanInCart>
+                { productInCart ? (
+                  <SpanInCart>{ productInCart.length}</SpanInCart>
                 ) : (
                   <SpanInCart>0</SpanInCart>
                 )}

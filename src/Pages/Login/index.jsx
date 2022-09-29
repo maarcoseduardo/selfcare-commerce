@@ -18,11 +18,11 @@ export function Login() {
   const [isLoading, setIsLoading] = useState(false);
 
   function handleSubmit() {
-    
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
+    
   }
   return (
     <React.Fragment>
