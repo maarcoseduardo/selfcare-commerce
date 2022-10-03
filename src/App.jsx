@@ -9,6 +9,7 @@ import { CardProvider } from "./Context/CardContext";
 import { CartProvider } from "./Context/CartContext";
 
 export function App() {
+
   return (
     <React.Fragment>
       <CardProvider>
