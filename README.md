@@ -32,7 +32,7 @@
 ![https://github.com/maarcoseduardo/selfcare-commerce/blob/master/Demo/selfcare-commerce.gif?raw=true](https://github.com/maarcoseduardo/selfcare-commerce/blob/master/Demo/selfcare-commerce.gif?raw=true)
 
 
-#### Pré-visualização do Projeto: https://selfcare-commerce-marcos.netlify.app/#!/
+#### Pré-visualização do Projeto: https://selfcare-commerce-marcos.netlify.app/
 ---
 
 ## 📌 Seções
