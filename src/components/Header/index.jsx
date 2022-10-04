@@ -19,28 +19,36 @@ import {
 } from "./styles";
 import { useCart } from "../../Context/CartContext";
 
-export function Header() {
+export function Header({ scroll }) {
   const { productInCart } = useCart();
   return (
     <>
-      <HeaderContainer>
+      <HeaderContainer scroll={scroll}>
         <DivContent>
-          <AnchorLogo to="/">
-            <AiFillStar size={23} color="#5CA720" />
+          <AnchorLogo to="/" scroll={scroll}>
+            {scroll ? (
+              <AiFillStar size={23} color="green" />
+            ) :(
+              <AiFillStar size={23} color="#5CA720" />
+            )}
             <H1>selfcare</H1>
           </AnchorLogo>
           <Unlist>
             <List>
-              <AiOutlineSearch size={23} color="#5CA720" />
+              {scroll ? (
+                <AiOutlineSearch size={23} color="green" />
+              ) : (
+                <AiOutlineSearch size={23} color="#5CA720" />
+              )}
             </List>
             <List>
-              <Anchor to="/login">
+              <Anchor to="/login" scroll={scroll}>
                 <AiOutlineUser size={23} />
               </Anchor>
             </List>
             <ListCart>
-              <Anchor to="/cart">
-                <DivInCart>
+              <Anchor to="/cart" scroll={scroll}>
+                <DivInCart scroll={scroll}>
                   {productInCart ? (
                     <SpanInCart>{productInCart.length}</SpanInCart>
                   ) : (

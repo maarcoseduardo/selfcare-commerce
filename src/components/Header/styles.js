@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 
 export const HeaderContainer = styled.header`
   position: fixed;
-  background: white;
   width: 100%;
+  z-index: 2;
+  background-color: ${({ scroll }) => (scroll ? "#ADDE87" : "white")};
+  transition: 0.3s;
 `;
 
 export const DivContent = styled.div`
@@ -29,7 +31,7 @@ export const AnchorLogo = styled(Link)`
   max-width: 90px;
   width: 100%;
   text-decoration: none;
-  color: var(--other-text-green);
+  color: ${({ scroll }) => (scroll ? "green" : "var(--other-text-green)")};
 `;
 
 export const H1 = styled.h1`
@@ -62,14 +64,14 @@ export const DivInCart = styled.div`
     right: -11px;
     color: white;
     border-radius: 50%;
-    background: var(--other-text-green);
+    background: ${({ scroll }) => (scroll ? "green" : "var(--other-text-green)")};
 `;
 
 export const SpanInCart = styled.span`
-
+  
 `;
 
 export const Anchor = styled(Link)`
   text-decoration: none;
-  color: var(--other-text-green);
+  color: ${({ scroll }) => (scroll ? "green" : "var(--other-text-green)")};
 `;

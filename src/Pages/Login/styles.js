@@ -16,8 +16,6 @@ export const Section = styled.section`
   border: none;
   background: #ADDE87;
   border-radius: 20px;
-
-  //transition translate
 `;
 
 export const Form = styled.form`
