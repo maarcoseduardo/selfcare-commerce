@@ -1,5 +1,5 @@
 <h1 align="center">
- Selfcare Commerce
+ Selfcare-commerce
 </h1>
 
 <p align="center">
