@@ -27,10 +27,9 @@
 
 **É um projeto de e-commerce com fins de estudo, onde é possível visualizar e inserir itens no carrinho de compras. Dentro da página do carrinho de compras, o usuário tem a possibilidade de incrementar, decrementar ou remover o item do carrinho. .**
 
-## Desktop
+## Pré-visualização
 
-
-## Mobile
+![https://github.com/maarcoseduardo/selfcare-commerce/blob/master/Demo/selfcare-commerce.gif?raw=true](https://github.com/maarcoseduardo/selfcare-commerce/blob/master/Demo/selfcare-commerce.gif?raw=true)
 
 
 #### Pré-visualização do Projeto: https://selfcare-commerce-marcos.netlify.app/#!/
